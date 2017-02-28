@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "short_name": "KeyBdFunFree",
+  "name": "Keyboard Fun Lite",
+  "version": "0.0.1",
+
+   "icons": {
+    "32": "res/icon/android/36x36.png",
+	"48":"res/icon/android/48x48.png",
+    "128": "res/icon/android/144x144.png"
+  },
+  "permissions": [
+    "storage",
+    "app.window.fullscreen",
+	"notifications"
+
+     ],
+		
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }}
+}
