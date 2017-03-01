@@ -10,6 +10,7 @@
     <plugin name="cordova-plugin-media" source="npm" spec="2.4.1" />
     <content src="index.html" />
     <access origin="*" />
+	<preference name="permissions" value="none" />
     <preference name="phonegap-version" value="cli-6.5.0" />
     <preference name="orientation" value="both" />
     <preference name="fullscreen" value="true" />
@@ -40,5 +41,6 @@
         <splash density="port-xxhdpi" src="www/res/screen/android/port960x1600.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/port1280x1920.png" />
     </platform>
+
     <engine name="ios" spec="~4.3.1" />
 </widget>
