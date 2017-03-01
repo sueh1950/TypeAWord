@@ -263,12 +263,12 @@ function process() {
 	inBox.value = "";
 }
 function getMediaURL(snd) {
-    if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + snd;
+    //if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + snd;
     return "/android_asset/www/" + snd;  //s;
 }
 function playSound(snd){
 	s = getMediaURL(snd);
-	var my_media = new Media(snd,
+	var my_media= new Media(snd,
             // success callback
              function () { console.log("playAudio():Audio Success"); },
             // error callback
@@ -282,19 +282,6 @@ b.innerHTML = "Hello World!";
 	//x.src = snd;
 	//x.play();
 }
-function playAudio(snd) {
-    var audioElement = document.getElementById("myAudio");
-    var url = snd; //audioElement.getAttribute('src');
-    var my_media = new Media(url,
-            // success callback
-             function () { console.log("playAudio():Audio Success"); },
-            // error callback
-             function (err) { console.log("playAudio():Audio Error: " + err); }
-    );
-           // Play audio
-    my_media.play();
-}
- 
 function soundKey(event){
 	var s=event.target.id; //= 'imgx'
 	var key =  s.charAt(3);
