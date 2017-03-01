@@ -169,7 +169,7 @@ function refreshImages(){
 }
 function playLetterSound(){
 	if (getBoolean("audioCue") == true){
-	    playSound(lang + "/Sounds/" + cChar + ".mp3");
+	    playSound(lang + "/Sounds/" + cChar + ".wav");
 	}
 
 }
@@ -285,7 +285,7 @@ b.innerHTML = "Hello World!";
 function soundKey(event){
 	var s=event.target.id; //= 'imgx'
 	var key =  s.charAt(3);
-	playSound(lang + "/Sounds/" + key + ".mp3");
+	playSound(lang + "/Sounds/" + key + ".wav");
 	setFocus();
 }
 function doNext(){	
@@ -318,9 +318,9 @@ function processKey(key){
 		if (key.toLowerCase() == cChar.toLowerCase()) {//Success!!
 				document.getElementById("pictureBox").src = lang +"/Images/" + cChar + ".png";
 				if (getBoolean("sayLetter")==true){
-					playSound(lang + "/Sounds/" + cChar + ".mp3");
+					playSound(lang + "/Sounds/" + cChar + ".wav");
 				} else {
-					playSound(lang + "/letterSounds/" + cChar + ".mp3");
+					playSound(lang + "/letterSounds/" + cChar + ".wav");
 				}
 				//endTime=getTimestamp();
 				//setLetterTimestamp(cChar, startTime, endTime, errorCount);
@@ -332,7 +332,7 @@ function processKey(key){
 		else {
 			errorCount += 1;
 			if (getBoolean("beep") == true){
-			playSound("misc/beep.mp3");
+			playSound("misc/beep.wav");
 			}
 		}
 	}
