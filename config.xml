@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.otcare.keyboardFunLite" version="0.0.3" versionCode="10" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>keyboard Fun Lite</name>
+    <description>
+   This app is designed by an Occupational Therapist to help children with physical or learning disabilities identify where keys are on the keyboard.
+</description>
+    <author email="sue@ot-care.com" href="http://ot-care.com">
+      Sue Hossack
+  </author>
+    <plugin name="cordova-plugin-media" source="npm" spec="2.4.1" />
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="phonegap-version" value="cli-6.5.0" />
+    <preference name="orientation" value="both" />
+    <preference name="fullscreen" value="true" />
+    <preference name="android-versionCode" value="0.0.1" />
+    <preference name="android-build-tool" value="ant|gradle" />
+    <preference name="android-minSdkVersion" value="10" />
+    <preference name="android-maxSdkVersion" value="15" />
+    <preference name="android-targetSdkVersion" value="12" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
+    <platform name="android">
+        <icon density="ldpi" src="www/res/icon/android/36x36.png" />
+        <icon density="mdpi" src="www/res/icon/android/48x48.png" />
+        <icon density="hdpi" src="www/res/icon/android/72x72.png" />
+        <icon density="xhdpi" src="www/res/icon/android/96x96.png" />
+        <icon density="xxhdpi" src="www/res/icon/android/144x144.png" />
+        <icon density="xxxhdpi" src="www/res/icon/android/192x192.png" />
+        <splash density="land-ldpi" src="www/res/screen/android/land320x240.png" />
+        <splash density="land-mdpi" src="www/res/screen/android/land480x320.png" />
+        <splash density="land-hdpi" src="www/res/screen/android/land800x480.png" />
+        <splash density="land-xhdpi" src="www/res/screen/android/land1280x720.png" />
+        <splash density="land-xxhdpi" src="www/res/screen/android/land1600x960.png" />
+        <splash density="land-xxxhdpi" src="www/res/screen/android/land1920x1280.png" />
+        <splash density="port-ldpi" src="www/res/screen/android/port240x320.png" />
+        <splash density="port-mdpi" src="www/res/screen/android/port320x480.png" />
+        <splash density="port-hdpi" src="www/res/screen/android/port480x800.png" />
+        <splash density="port-xhdpi" src="www/res/screen/android/port720x1280.png" />
+        <splash density="port-xxhdpi" src="www/res/screen/android/port960x1600.png" />
+        <splash density="port-xxxhdpi" src="www/res/screen/android/port1280x1920.png" />
+    </platform>
+    <engine name="ios" spec="~4.3.1" />
+</widget>
