@@ -264,7 +264,7 @@ function process() {
 }
 function getMediaURL(snd) {
     if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + snd;
-    return s;
+    return "/android_asset/www/" + snd;  //s;
 }
 function playSound(snd){
 	s = getMediaURL(snd);
@@ -274,8 +274,11 @@ function playSound(snd){
             // error callback
              function (err) { console.log("playAudio():Audio Error: " + err); }
     );
+	
            // Play audio
-    my_media.play();
+b=  document.getElementById("myAudio");
+b.innerHTML = "Hello World!";  
+  my_media.play();
 	//x.src = snd;
 	//x.play();
 }
@@ -295,7 +298,7 @@ function playAudio(snd) {
 function soundKey(event){
 	var s=event.target.id; //= 'imgx'
 	var key =  s.charAt(3);
-	playSound(lang + "/Sounds/" + key + ".wav");
+	playSound(lang + "/Sounds/" + key + ".mp3");
 	setFocus();
 }
 function doNext(){	
@@ -328,9 +331,9 @@ function processKey(key){
 		if (key.toLowerCase() == cChar.toLowerCase()) {//Success!!
 				document.getElementById("pictureBox").src = lang +"/Images/" + cChar + ".png";
 				if (getBoolean("sayLetter")==true){
-					playSound(lang + "/Sounds/" + cChar + ".wav");
+					playSound(lang + "/Sounds/" + cChar + ".mp3");
 				} else {
-					playSound(lang + "/letterSounds/" + cChar + ".wav");
+					playSound(lang + "/letterSounds/" + cChar + ".mp3");
 				}
 				//endTime=getTimestamp();
 				//setLetterTimestamp(cChar, startTime, endTime, errorCount);
@@ -342,7 +345,7 @@ function processKey(key){
 		else {
 			errorCount += 1;
 			if (getBoolean("beep") == true){
-			playSound("misc/beep.wav");
+			playSound("misc/beep.mp3");
 			}
 		}
 	}
