@@ -7,21 +7,24 @@
     <author email="sue@ot-care.com" href="http://ot-care.com">
       Sue Hossack
   </author>
-    <plugin name="cordova-plugin-media" source="npm" spec="2.4.1" />
     <content src="index.html" />
     <access origin="*" />
-	 <feature name="permissions" value="none"/>
-	<preference name="permissions" value="none" />
-    <preference name="phonegap-version" value="cli-6.5.0" />
+    <preference name="permissions"                value="none"/>
+
+    <preference name="phonegap-version" value="cli-6.5.0" />	
     <preference name="orientation" value="both" />
     <preference name="fullscreen" value="true" />
     <preference name="android-versionCode" value="0.0.1" />
+<!--	
     <preference name="android-build-tool" value="ant|gradle" />
     <preference name="android-minSdkVersion" value="10" />
     <preference name="android-maxSdkVersion" value="15" />
     <preference name="android-targetSdkVersion" value="12" />
     <preference name="android-installLocation" value="auto" />
     <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
+-->	
+	<plugin name="cordova-plugin-media" source="npm" spec="2.4.1" />
+  
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/36x36.png" />
         <icon density="mdpi" src="www/res/icon/android/48x48.png" />
