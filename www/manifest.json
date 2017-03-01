@@ -10,10 +10,7 @@
     "128": "res/icon/android/144x144.png"
   },
   "permissions": [
-    "storage",
     "app.window.fullscreen",
-	"notifications"
-
      ],
 		
   "app": {
