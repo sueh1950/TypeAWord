@@ -266,6 +266,10 @@ function getMediaURL(snd) {
     //if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + snd;
     return "/android_asset/www/" + snd;  //s;
 }
+function log (s) {
+var b=  document.getElementById("log");
+b.innerHTML = s; 
+}
 function playSound(snd){
 	s = getMediaURL(snd);
 	var my_media= new Media(s,
@@ -275,9 +279,7 @@ function playSound(snd){
              function (err) { console.log("playAudio():Audio Error: " + err); }
     );
 	
-           // Play audio
-b=  document.getElementById("myAudio");
-b.innerHTML = "Hello World!";  
+           // Play audio 
   my_media.play();
 	//x.src = snd;
 	//x.play();
