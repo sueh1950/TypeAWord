@@ -268,7 +268,7 @@ function getMediaURL(snd) {
 }
 function playSound(snd){
 	s = getMediaURL(snd);
-	var my_media = new Media(s,
+	var my_media = new Media(snd,
             // success callback
              function () { console.log("playAudio():Audio Success"); },
             // error callback
