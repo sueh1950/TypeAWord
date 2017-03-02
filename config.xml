@@ -1,5 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.otcare.keyboardFunLite" version="0.0.3" versionCode="10" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.otcare.keyboardFunLite" 
+	version="0.0.3" 
+	versionCode="10" 
+	xmlns="http://www.w3.org/ns/widgets" 
+	xmlns:gap="http://phonegap.com/ns/1.0"
+	xmlns:android = "http://schemas.android.com/apk/res/android">
     <name>keyboard Fun Lite</name>
     <description>
    This app is designed by an Occupational Therapist to help children with physical or learning disabilities identify where keys are on the keyboard.
@@ -8,21 +13,22 @@
       Sue Hossack
   </author>
     <content src="index.html" />
-    <access origin="*" />
-    <preference name="permissions"                value="none"/>
+<!--    <access origin="*" />-->
+    <preference name="permissions" value="none"/>
 
     <preference name="phonegap-version" value="cli-6.5.0" />	
     <preference name="orientation" value="both" />
     <preference name="fullscreen" value="true" />
     <preference name="android-versionCode" value="0.0.1" />
-<!--	
-    <preference name="android-build-tool" value="ant|gradle" />
+	<preference name="target-device" value="tablet" />
+	
+    <preference name="android-build-tool" value="gradle" />
     <preference name="android-minSdkVersion" value="10" />
     <preference name="android-maxSdkVersion" value="15" />
     <preference name="android-targetSdkVersion" value="12" />
     <preference name="android-installLocation" value="auto" />
     <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
--->	
+
 	<plugin name="cordova-plugin-media" source="npm" spec="2.4.1" />
   
     <platform name="android">
