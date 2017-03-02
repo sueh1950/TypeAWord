@@ -263,8 +263,8 @@ function process() {
 	inBox.value = "";
 }
 function getMediaURL(snd) {
-    //if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + snd;
-    return "/android_asset/www/" + snd;  //s;
+    if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + snd;
+    return  s;
 }
 function log (s) {
 var b=  document.getElementById("log");
@@ -281,8 +281,7 @@ function playSound(snd){
 	
            // Play audio 
   my_media.play();
-	//x.src = snd;
-	//x.play();
+log("play " + s);
 }
 function soundKey(event){
 	var s=event.target.id; //= 'imgx'
