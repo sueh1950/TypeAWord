@@ -17,9 +17,12 @@
 
 	<plugin name="cordova-plugin-media" source="npm" spec="2.4.1" />
 	<plugin name="cordova-plugin-device" source="npm" spec="1.1.4"  />  
-	<gap:config-file platform="android" parent="/manifest" mode="delete">
-    <uses-permission android:name="android.permission.PLAY_AUDIO" />
-    </gap:config-file>
+<gap:config-file platform="android" parent="/manifest" mode="delete">
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+</gap:config-file>
     <preference name="permissions" value="none"/>
 <!--android.permission.RECORD_AUDIO, android.permission.READ_PHONE_STATE-->
 
