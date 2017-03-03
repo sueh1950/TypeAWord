@@ -281,7 +281,6 @@ function playSound(snd){
 	
            // Play audio 
   my_media.play();
-log("play " + s);
 }
 function soundKey(event){
 	var s=event.target.id; //= 'imgx'
