@@ -28,10 +28,11 @@
     <preference name="android-targetSdkVersion" value="12" />
     <preference name="android-installLocation" value="auto" />
     <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
-
+<!--
 	<plugin name="cordova-plugin-media" source="npm" spec="2.4.1" />
-	<plugin name="cordova-plugin-device" source="npm"  />  
-    <platform name="android">
+	<plugin name="cordova-plugin-device" source="npm" spec="1.1.4"  />  
+-->    
+	<platform name="android">
         <icon density="ldpi" src="www/res/icon/android/36x36.png" />
         <icon density="mdpi" src="www/res/icon/android/48x48.png" />
         <icon density="hdpi" src="www/res/icon/android/72x72.png" />
