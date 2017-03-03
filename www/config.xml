@@ -17,7 +17,9 @@
 
 	<plugin name="cordova-plugin-media" source="npm" spec="2.4.1" />
 	<plugin name="cordova-plugin-device" source="npm" spec="1.1.4"  />  
-
+	<gap:config-file platform="android" parent="/manifest" mode="delete">
+    <uses-permission android:name="android.permission.PLAY_AUDIO" />
+    </gap:config-file>
     <preference name="permissions" value="none"/>
 <!--android.permission.RECORD_AUDIO, android.permission.READ_PHONE_STATE-->
 
@@ -34,10 +36,6 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
     
-
-	
-
- 
 	<platform name="android">
         <icon density="ldpi" src="www/res/icon/android/36x36.png" />
         <icon density="mdpi" src="www/res/icon/android/48x48.png" />
@@ -58,9 +56,6 @@
         <splash density="port-xxhdpi" src="www/res/screen/android/port960x1600.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/port1280x1920.png" />
     </platform>
-	<gap:config-file platform="android" parent="/manifest" mode="delete">
-    <uses-permission android:name="android.permission.RECORD_VIDEO" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    </gap:config-file>
+
     <engine name="ios" spec="~4.3.1" />
 </widget>
