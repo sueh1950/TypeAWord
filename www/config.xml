@@ -19,6 +19,7 @@
 	<plugin name="cordova-plugin-device" source="npm" spec="1.1.4"  />  
 
     <preference name="permissions" value="none"/>
+<!--android.permission.RECORD_AUDIO, android.permission.READ_PHONE_STATE-->
 
     <preference name="phonegap-version" value="cli-6.5.0" />	
     <preference name="orientation" value="both" />
@@ -32,7 +33,9 @@
     <preference name="android-targetSdkVersion" value="12" />
     <preference name="android-installLocation" value="auto" />
     <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
+    
 
+	
 
  
 	<platform name="android">
@@ -55,6 +58,9 @@
         <splash density="port-xxhdpi" src="www/res/screen/android/port960x1600.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/port1280x1920.png" />
     </platform>
-
+	<gap:config-file platform="android" parent="/manifest" mode="delete">
+    <uses-permission android:name="android.permission.RECORD_VIDEO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    </gap:config-file>
     <engine name="ios" spec="~4.3.1" />
 </widget>
