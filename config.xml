@@ -59,5 +59,35 @@
         <splash density="port-xxxhdpi" src="www/res/screen/android/port1280x1920.png" />
     </platform>
 
+-<platform name="ios">
+<icon src="www/res/icon/ios/icon.png" width="57" platform="ios" height="57"/>
+<icon src="www/res/icon/ios/icon@2x.png" width="114" platform="ios" height="114"/>
+<icon src="www/res/icon/ios/icon-40.png" width="40" platform="ios" height="40"/>
+<icon src="www/res/icon/ios/icon-40@2x.png" width="80" platform="ios" height="80"/>
+<icon src="www/res/icon/ios/icon-50.png" width="50" platform="ios" height="50"/>
+<icon src="www/res/icon/ios/icon-50@2x.png" width="100" platform="ios" height="100"/>
+<icon src="www/res/icon/ios/icon-60.png" width="60" platform="ios" height="60"/>
+<icon src="www/res/icon/ios/icon-60@2x.png" width="120" platform="ios" height="120"/>
+<icon src="www/res/icon/ios/icon-60@3x.png" width="180" platform="ios" height="180"/>
+<icon src="www/res/icon/ios/icon-72.png" width="72" platform="ios" height="72"/>
+<icon src="www/res/icon/ios/icon-72@2x.png" width="144" platform="ios" height="144"/>
+<icon src="www/res/icon/ios/icon-76.png" width="76" platform="ios" height="76"/>
+<icon src="www/res/icon/ios/icon-76@2x.png" width="152" platform="ios" height="152"/>
+<icon src="www/res/icon/ios/icon-small.png" width="29" platform="ios" height="29"/>
+<icon src="www/res/icon/ios/icon-small@2x.png" width="58" platform="ios" height="58"/>
+<icon src="www/res/icon/ios/icon-small@3x.png" width="87" platform="ios" height="87"/>
+<splash src="www/res/screen/ios/Default-568h@2x~iphone.png" width="640" platform="ios" height="1136"/>
+<splash src="www/res/screen/ios/Default-667h.png" width="750" platform="ios" height="1334"/>
+<splash src="www/res/screen/ios/Default-736h.png" width="1242" platform="ios" height="2208"/>
+<splash src="www/res/screen/ios/Default-Landscape-736h.png" width="2208" platform="ios" height="1242"/>
+<splash src="www/res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" platform="ios" height="1536"/>
+<splash src="www/res/screen/ios/Default-Landscape~ipad.png" width="1024" platform="ios" height="768"/>
+<splash src="www/res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" platform="ios" height="2048"/>
+<splash src="www/res/screen/ios/Default-Portrait~ipad.png" width="768" platform="ios" height="1024"/>
+<splash src="www/res/screen/ios/Default@2x~iphone.png" width="640" platform="ios" height="960"/>
+<splash src="www/res/screen/ios/Default~iphone.png" width="320" platform="ios" height="480"/>
+
+</platform>
+
     <engine name="ios" spec="~4.3.1" />
 </widget>
