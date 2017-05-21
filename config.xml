@@ -88,6 +88,12 @@
 <splash src="www/res/screen/ios/Default~iphone.png" width="320" platform="ios" height="480"/>
 
 </platform>
-
-    <engine name="ios" spec="~4.3.1" />
+  <!-- iOS only -->
+  <preference name="target-device" value="universal" />
+  <preference name="prerendered-icon" value="true" />
+  <preference name="detect-data-types" value="true" />
+  <preference name="exit-on-suspend" value="false" />
+  <!-- <preference name="deployment-target" value="7.0" /> -->
+  
+      <!--<engine name="ios" spec="~4.3.1" />-->
 </widget>
