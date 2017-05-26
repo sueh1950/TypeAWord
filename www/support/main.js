@@ -263,8 +263,8 @@ function process() {
 	inBox.value = "";
 }
 function getMediaURL(snd) {
-    if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + snd;
-    return  s;
+   //## if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + snd;
+    return  snd;
 }
 function log (s) {
 var b=  document.getElementById("log");
@@ -396,5 +396,6 @@ setLineColor("2wsx9ol","green");
 setLineColor("3edc8ik","yellow");
 setLineColor( "4567rtyufghjvbnm",  "blue");
 } 
+
  
  
