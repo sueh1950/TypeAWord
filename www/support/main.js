@@ -180,6 +180,7 @@ function clearButtons(){
 }
 
 function doHide(){
+	console.log("dohide");
  	var x = document.getElementsByTagName("div");
 	var h =getBoolean("hide");
 	var b = document.getElementById("hide")
@@ -289,7 +290,7 @@ function soundKey(event){
 	setFocus();
 }
 function doNext(){	
-
+console.log("donext");
     if (getBoolean("jump")) {
 		cIndex = Math.floor((Math.random() * cLine.length) + 1);
     } else
