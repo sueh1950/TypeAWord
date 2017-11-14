@@ -275,8 +275,8 @@ function process() {
 	inBox.value = "";
 }
 function getMediaURL(snd) {
-   //## if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + snd;
-    return  snd;
+	if(device.platform.toLowerCase() === "android") return "/android_asset/www/" + snd;
+		return  snd;
 }
 function log (s) {
 var b=  document.getElementById("log");
