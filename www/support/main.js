@@ -226,7 +226,7 @@ function setButtons() {
 }
 function doLang() {
 	console.log("doLang");
-	var lang = getData("lang");
+	lang = getData("lang");
 	if (lang =="en") {
 		lang= "es";
 		document.getElementById("lang").innerHTML = "Espa&ntilde;ol";
@@ -282,8 +282,10 @@ var b=  document.getElementById("log");
 b.innerHTML = s; 
 }
 function playSound(snd){
-	console.log(snd);
+console.log(snd);	
 	s = getMediaURL(snd);
+console.log(s);	
+	
 	var my_media= new Media(s,
             // success callback
              function () { console.log("playAudio():Audio Success"); },
@@ -328,7 +330,6 @@ function processKey(key){
 
 	try {
 		if (key.toLowerCase() == cChar.toLowerCase()) {//Success!!
-			console.log(lang +"/Images/" + cChar + ".png");
 				document.getElementById("pictureBox").src = lang +"/Images/" + cChar + ".png";
 				if (getBoolean("sayLetter")==true){
 					playSound(lang + "/Sounds/" + cChar + ".wav");
