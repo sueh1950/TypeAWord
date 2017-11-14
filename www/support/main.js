@@ -328,6 +328,7 @@ function processKey(key){
 
 	try {
 		if (key.toLowerCase() == cChar.toLowerCase()) {//Success!!
+			console.log(lang +"/Images/" + cChar + ".png");
 				document.getElementById("pictureBox").src = lang +"/Images/" + cChar + ".png";
 				if (getBoolean("sayLetter")==true){
 					playSound(lang + "/Sounds/" + cChar + ".wav");
