@@ -14,11 +14,7 @@ var lang="en";
 var startTime=0;
 const alphabet = "abcdefghijklmnopqrstuvwxyz";
 function setButtonListeners(){
-/*#	document.getElementById("line0").addEventListener("click",function(){doLine(1);});
-	document.getElementById("line1").addEventListener("click", function(){doLine(0);});
-	document.getElementById("line2").addEventListener("click", function(){doLine(2);});
-	document.getElementById("line3").addEventListener("click",function(){doLine(3);});
-	*/
+
 	document.getElementById("next").addEventListener("click", doNext);	
 	document.getElementById("caps").addEventListener("click", doCaps);
 	document.getElementById("jump").addEventListener("click", doJump);
@@ -27,15 +23,12 @@ function setButtonListeners(){
 	document.getElementById("box").addEventListener("click", setFocus);
     document.getElementById("buttons").addEventListener("click", setFocus);
     document.getElementById("arrow").addEventListener("click", setFocus);
-	    document.getElementById("buttons").addEventListener("click", setFocus);
-/*#		
-    document.getElementById("data").addEventListener("click", goToDataCollection);  
-    document.getElementById("settings").addEventListener("click", goToSettings);      
- */
+	document.getElementById("buttons").addEventListener("click", setFocus);
+    document.getElementById("lang").addEventListener("click", doLang);  
 	document.getElementById("inBox").addEventListener("keyup", process);  
 	
 
-window.onresize = resize;
+	window.onresize = resize;
 
 	}
 
@@ -132,7 +125,7 @@ function setUpKeyBlock(keyName){
 	var textColor = getTextColor(keyName);
 
 	if (getBoolean("hide") ) {
-			s=  "en/Images/blank.png";
+			s=  lang+ "/Images/blank.png";
 		} else {
 			s = textColor  +getData("caps") + 'letters/' +keyName +'.png';
 		}
@@ -157,7 +150,7 @@ function refreshImages(){
 	document.getElementById("inBox").focus();
 	inBox.value = "";
 	errorCount = 0;
-	var temp = "en/Images/blank.png";
+	var temp = lang + "/Images/blank.png";
 	document.getElementById("pictureBox").src = temp; //"en/Images/blank.jpg"; 
 	bodyColor = getTextColor(cChar); //ForBG();
 	temp = bodyColor +getData("caps") + "letters/" + cChar + ".png";
@@ -230,6 +223,23 @@ function setButtons() {
 		b.style.backgroundColor ="darkgray";
 	}
 		
+}
+function doLang() {
+	console.log("doLang");
+	var lang = getData("lang");
+	if (lang =="en") {
+		lang= "es";
+		document.getElementById("lang").innerHTML = "Espa&ntilde;ol";
+		document.getElementById("click").innerHTML = "Haga clic aqu&iacute; para mostrar el teclado";
+		
+	} else {
+		lang ="en";
+		document.getElementById("lang").innerHTML = "English";
+		document.getElementById("click").innerHTML = "Click here to bring up keyboard";
+	}
+	setData("lang",  lang);	
+	
+	refreshScreen(lIndex);
 }
 
 function doCaps() {
@@ -305,7 +315,7 @@ console.log("donext");
 	document.getElementById(s).className = getData(cChar+"Color"); // put key back to original color
  
 	if (getBoolean("hide")) {
-		document.getElementById("img"+cChar).src =  "en/Images/blank.png";
+		document.getElementById("img"+cChar).src =  lang + "Images/blank.png";
 	}
 
 	cChar = cLine[cIndex];			// get next key

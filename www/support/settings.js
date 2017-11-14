@@ -20,6 +20,7 @@ setData("hide",false);
 setData("promptColor","fuchsia");
 setData("prompt",true);
 setData("jump",false);
+setData("lang","en");
 setData("timer","2");
 setData("left_right",false);
 setData("leftColor","green");
