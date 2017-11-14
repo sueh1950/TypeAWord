@@ -8,7 +8,7 @@ var cChar = "a";
 var cIndex;  //index to character in line
 var cLine = "";
 var lIndex=0;
-var lang="en";
+var lang="es";
 //var caps="";
 //var jump=false;
 var startTime=0;
@@ -315,7 +315,7 @@ console.log("donext");
 	document.getElementById(s).className = getData(cChar+"Color"); // put key back to original color
  
 	if (getBoolean("hide")) {
-		document.getElementById("img"+cChar).src =  lang + "Images/blank.png";
+		document.getElementById("img"+cChar).src =  lang + "/Images/blank.png";
 	}
 
 	cChar = cLine[cIndex];			// get next key
