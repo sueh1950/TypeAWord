@@ -282,6 +282,7 @@ var b=  document.getElementById("log");
 b.innerHTML = s; 
 }
 function playSound(snd){
+	console.log(snd);
 	s = getMediaURL(snd);
 	var my_media= new Media(s,
             // success callback
