@@ -8,7 +8,7 @@ var cChar = "a";
 var cIndex;  //index to character in line
 var cLine = "";
 var lIndex=0;
-var lang="es";
+var lang="en";
 //var caps="";
 //var jump=false;
 var startTime=0;
