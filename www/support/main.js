@@ -295,8 +295,10 @@ console.log(s);
 	
            // Play audio 
   my_media.play();
-  //my_media.stop();
+  setTimeout(funtion(){ my_media.stop();
   my_media.release();
+  }, 4*1000);
+
 }
 function soundKey(event){
 	var s=event.target.id; //= 'imgx'
