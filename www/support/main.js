@@ -27,7 +27,6 @@ function setButtonListeners(){
     document.getElementById("lang").addEventListener("click", doLang);  
 	document.getElementById("inBox").addEventListener("keyup", process);  
 	
-
 	window.onresize = resize;
 
 	}
@@ -296,6 +295,8 @@ console.log(s);
 	
            // Play audio 
   my_media.play();
+  my_media.stop();
+  my_media.release();
 }
 function soundKey(event){
 	var s=event.target.id; //= 'imgx'
