@@ -288,17 +288,14 @@ console.log(s);
 	
 	var my_media= new Media(s,
             // success callback
-             function () { console.log("playAudio():Audio Success"); },
+             function () { //console.log("playAudio():Audio Success");
+			 },
             // error callback
-             function (err) { console.log("playAudio():Audio Error: " + err); }
+             function (err) { console.log("playAudio():Audio Error: " + err.code +":" + err.message); }
     );
-	
-           // Play audio 
-  my_media.play();
-  setTimeout(function(){ my_media.stop();
-  my_media.release();
-  }, 4*1000);
-
+	// Play audio 
+	my_media.play();
+	setTimeout(function(){my_media.release(); }, 4*1000);
 }
 function soundKey(event){
 	var s=event.target.id; //= 'imgx'
