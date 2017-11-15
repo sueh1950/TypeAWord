@@ -295,7 +295,7 @@ console.log(s);
 	
            // Play audio 
   my_media.play();
-  my_media.stop();
+  //my_media.stop();
   my_media.release();
 }
 function soundKey(event){
