@@ -282,10 +282,9 @@ var b=  document.getElementById("log");
 b.innerHTML = s; 
 }
 function playSound(snd){
-console.log(snd);	
-	s = getMediaURL(snd);
-console.log(s);	
-	
+
+	s = getMediaURL(snd); // add android prefix to filename if necessary
+		
 	var my_media= new Media(s,
             // success callback
              function () { //console.log("playAudio():Audio Success");
@@ -295,7 +294,8 @@ console.log(s);
     );
 	// Play audio 
 	my_media.play();
-	setTimeout(function(){my_media.release(); }, 4*1000);
+	//release the object
+	setTimeout(function(){my_media.stop(); my_media.release(); }, 4*1000);
 }
 function soundKey(event){
 	var s=event.target.id; //= 'imgx'
