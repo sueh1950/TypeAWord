@@ -359,14 +359,14 @@ function processKey(key){
 				}
 				try {
 				document.getElementById("inBox").addEventListener("keyup", process); 
-				}
+				} catch (err) {}
 			}
 	}
 	catch (err)
 	{
 		try {
 			document.getElementById("inBox").addEventListener("keyup", process); 
-		}
+		} catch (err) {}
 	}
 }
 function setFocus (){
