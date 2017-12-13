@@ -28,8 +28,7 @@ function setButtonListeners(){
 	document.getElementById("inBox").addEventListener("keyup", process);  
 	
 	window.onresize = resize;
-
-	}
+}
 
 function resize()
 {
@@ -41,34 +40,29 @@ function resize()
 }
 
 function startUp () {
-
-	console.log("startup");
-	 console.log("lines at startup", lines);
  
-if (getSettings())  
-{
-	lIndex = getNumber("lIndex");
-	for (i=0; i < 4; i++)
-	{	//put line buttons in array for clearing
-		buttons[i] = document.getElementById("line" + i);
+	if (getSettings())  
+	{
+		lIndex = getNumber("lIndex");
+		for (i=0; i < 4; i++)
+		{	//put line buttons in array for clearing
+			buttons[i] = document.getElementById("line" + i);
+		}
+		doLine(lIndex);
+		setButtons();
+	
+		var s = ".prompt { background-color:" + getData("promptColor") + "; border: 5px solid black;}"
+		document.getElementById("prompt").innerHTML=s;
+	
+		s = ".bodyColor { background-color:" + getData("bodyColor") + ";}"
+		document.getElementById("bg").innerHTML=s;
+	
+		setTimeout(setFocus, 4*1000);
+		setSessionTimestamp();
+	} else {
+		document.getElementById("buttons").innerHTML="Trial Period has expired";
 	}
-	doLine(lIndex);
-	setButtons();
-	
-	
-	var s = ".prompt { background-color:" + getData("promptColor") + "; border: 5px solid black;}"
-	document.getElementById("prompt").innerHTML=s;
-	
-	s = ".bodyColor { background-color:" + getData("bodyColor") + ";}"
-	document.getElementById("bg").innerHTML=s;
-	
-	setTimeout(setFocus, 4*1000);
-	setSessionTimestamp();
-} else {
-	document.getElementById("buttons").innerHTML="Trial Period has expired";
-}
 	setButtonListeners();
-
 }
 
 function refreshScreen(lIdx){	
@@ -110,9 +104,8 @@ function refreshScreen(lIdx){
 		s = 'key' + letter;
 		try {
 			document.getElementById(s).removeEventListener('click',function(){soundKey(event);});
-			//console.log("removed event");
 		} catch (err){
-			//console.log("no event");
+
 		}
 		document.getElementById(s).addEventListener('click',function(){soundKey(event);});
 	}
@@ -127,7 +120,6 @@ function setUpKeyBlock(keyName){
 			s=  lang+ "/Images/blank.png";
 		} else {
 			s = textColor  +getData("caps") + 'letters/' +keyName +'.png';
-console.log(s);
 		}
 	return s;
 }
@@ -151,7 +143,7 @@ function refreshImages(){
 	inBox.value = "";
 	errorCount = 0;
 	var temp = lang + "/Images/blank.png";
-	document.getElementById("pictureBox").src = temp; //"en/Images/blank.jpg"; 
+	document.getElementById("pictureBox").src = temp; 
 	bodyColor = getTextColor(cChar); //ForBG();
 	temp = bodyColor +getData("caps") + "letters/" + cChar + ".png";
 	document.getElementById("keyPicture").src = temp;
@@ -173,7 +165,6 @@ function clearButtons(){
 }
 
 function doHide(){
-	console.log("dohide");
  	var x = document.getElementsByTagName("div");
 	var h =getBoolean("hide");
 	var b = document.getElementById("hide")
@@ -186,7 +177,6 @@ function doHide(){
 		b.style.backgroundColor ="darkgray";
 		}
 	setBoolean("hide", h);
- 
 	refreshScreen(lIndex);
 }
 
@@ -225,7 +215,6 @@ function setButtons() {
 		
 }
 function doLang() {
-	console.log("doLang");
 	lang = getData("lang");
 	if (lang =="en") {
 		lang= "es";
@@ -268,9 +257,25 @@ function doLine(lIndex){
 }
 
 function process() {
-	var inBox = document.getElementById("inBox");
+	try {
+			document.getElementById("inBox").removeEventListener("keyup", process); 
+	} catch (err) {}
+	var inBox = document.getElementById("inBox"); 
 	var key = inBox.value; 
-	processKey(inBox.value.toLowerCase());
+	var keyPressed = key;
+	//ignore non alpha codes
+	if (!isNaN(key.charCodeAt(0))) {
+		//enye character for Spanish keyboard
+		try{
+			if ((key.charCodeAt(0) == 241) ||(key.charCodeAt(0) == 209)) {
+					key='~';
+			}
+		} catch (err) {console.log(err);}
+		processKey(keyPressed, key.toLowerCase());
+	} else {
+		document.getElementById("inBox").addEventListener("keyup", process);  
+	}
+
 	inBox.value = "";
 }
 function getMediaURL(snd) {
@@ -295,7 +300,7 @@ function playSound(snd){
 	// Play audio 
 	my_media.play();
 	//release the object
-	setTimeout(function(){my_media.stop(); my_media.release(); }, 4*1000);
+	setTimeout(function(){ my_media.release(); }, 4*1000);
 }
 function soundKey(event){
 	var s=event.target.id; //= 'imgx'
@@ -304,7 +309,10 @@ function soundKey(event){
 	setFocus();
 }
 function doNext(){	
-console.log("donext");
+	try {
+		document.getElementById("inBox").addEventListener("keyup", process);
+	} catch (err) {}
+
     if (getBoolean("jump")) {
 		cIndex = Math.floor((Math.random() * cLine.length) + 1);
     } else
@@ -331,7 +339,6 @@ function processKey(key){
 
 	try {
 		if (key.toLowerCase() == cChar.toLowerCase()) {//Success!!
-		console.log (lang +"/Images/" + cChar + ".png");
 				document.getElementById("pictureBox").src = lang +"/Images/" + cChar + ".png";
 				if (getBoolean("sayLetter")==true){
 					playSound(lang + "/Sounds/" + cChar + ".wav");
@@ -346,19 +353,28 @@ function processKey(key){
 				setTimeout(doNext, secs*1000);
 		}
 		else {
-			errorCount += 1;
-			if (getBoolean("beep") == true){
-			playSound("misc/beep.wav");
+				errorCount += 1;
+				if (getBoolean("beep") == true){
+					playSound("misc/beep.wav");
+				}
+				try {
+				document.getElementById("inBox").addEventListener("keyup", process); 
+				}
 			}
-		}
 	}
 	catch (err)
 	{
-	  console.log("process Key error");
+		try {
+			document.getElementById("inBox").addEventListener("keyup", process); 
+		}
 	}
 }
 function setFocus (){
 	document.getElementById("inBox").focus();
+	try {
+		b.removeEventListener("keyup", process); 
+	} catch (err) {}
+	b.addEventListener("keyup", process);
 }
 function processEvent() {
 
