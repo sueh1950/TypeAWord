@@ -276,7 +276,8 @@ b.innerHTML = s;
 }
 function playSound(snd){
 
-	s = getMediaURL(snd); // add android prefix to filename if necessary
+	s = snd;
+	//******s = getMediaURL(snd); // add android prefix to filename if necessary
 		
 	var my_media= new Media(s,
             // success callback
@@ -358,17 +359,16 @@ function processKey(key){
 	}
 }
 function setFocus (){
+	var b;
 	try {
-	document.getElementById("inBox").focus;
-	document.getElementById("inBox").value = "";
+		b = document.getElementById("inBox");
+		b.focus();
+		b.value = "";
+		try {
+			b.removeEventListener("keyup", process); 
+			} catch (err) {}
+		b.addEventListener("keyup", process);
 	} catch (err) {console.log(err);}
-//	var b = document.getElementById("inBox");
-	//b.focus();
-	//b.value = "";
-	//try {
-		//b.removeEventListener("keyup", process); 
-	//} catch (err) {}
-	//b.addEventListener("keyup", process);
 }
 function processEvent() {
 
