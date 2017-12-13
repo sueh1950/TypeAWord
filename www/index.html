@@ -1,10 +1,10 @@
 <!DOCTYPE html>
- <html  > 
+ <html manifest="cache.manifest" > 
 <head>
-<title> KeyboardFun Lite </title>
+<title> KeyboardFun </title>
 	<link rel="stylesheet" rev="stylesheet" href="support/main.css">
 	<link rel="manifest" href="manifest.json">
-	<link rel="icon" sizes="192x192" href="misc/icon.png"> 
+	<link rel="icon" sizes="192x192" href="misc/icon.jpg"> 
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -12,64 +12,46 @@
 	<link rel='apple-touch-startup-image' href='misc/icon.jpg' />
 
 <script type="text/javascript" src="cordova.js"></script>
-<script src="support/settings.js" ></script>
-<script src="support/main.js" ></script>
 
+<script  type="text/javascript" src="support/settings.js" ></script>
+<!--<script  type="text/javascript" src="support/dataCollection.js" ></script>-->
+<script  type="text/javascript" src="support/main.js" ></script>
 <style id="prompt">
 .prompt {
     background-color: red; 
 	border: 5px solid black
 	}
 </style>
+
 <style id="bg">
 .bodyColor {
     background-color: white; 
 }
 </style>
 </head>
-<body  id="KeyboardFun" class="bodyColor">
-<div   id="buttons">
-<button id="line0"   disabled >123</button>	&nbsp;
-<button id="line1" disabled >QWE</button>	&nbsp;
-<button id="line2" disabled  >ASD</button>	&nbsp;
-<button id="line3"   disabled >ZXC</button>	&nbsp;
-
-<button id="next"    >Next</button>	&nbsp;
-<button id="caps"  >Caps</button>	&nbsp;
-<button id="jump"   >Jump</button>	&nbsp;
-<button id="hide"    >Hide</button>	&nbsp;
-<button id="lang"    >English</button>	&nbsp;
-<!--<input type="text" id="inBox" value="" onkeyup="process()"><img src="misc/left.png" style="height:20px; width:30px" onClick="setFocus()"><font face="arial">Click here to bring up keyboard </font>&nbsp;&nbsp;&nbsp;    
--->
-<input type="text" id="inBox" value="a">&nbsp;&nbsp;
-<img src="misc/left.png" id="arrow" style="height:20px; width:30px">
-
-<font face="arial" id="click">Click here to bring up keyboard </font>&nbsp;&nbsp;&nbsp;     
- 
-<!--
+<body  id="IcanSpell" class="bodyColor">
+<div   id="buttons"  >
+<button id="home" style="background-image: url('misc/home.png');" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>	&nbsp;
 <button id="data" style="background-image: url('misc/dataCollection.png');" >Data</button>&nbsp;&nbsp;
 <button id="settings" style="background-image: url('misc/settings.png');" >&nbsp;&nbsp;&nbsp;&nbsp;</button>&nbsp;&nbsp; &nbsp;
+<button id="lang"    >English</button>
+<input type="password" id="inBox" value=""  >
 </a>
--->
-<p></P>
+<p id = "text">For Adults: <br> Type the word to be spelled here, then press go. The child will be given prompts for each letter.
+<br> </P>
+<p id="word"></p>
 </div>
-
-
- <div id="keyline">
-
- </div>
+<div id="remove">
+<input type="text" class="bodyColor" id="wordBox"  value=""  >
+</div>
  <p><p>
- <div id="box" >
-   <!--<img src="en/Images/blank.png"  id="keyPicture"   style="width:40%; height:40%;  border: 3px solid white; border-radius: 30px;	" >
-   -->
-   <img src="en/Images/blank.png"  id="keyPicture"   class="keyPicture" >
-   
-   <img src="en/Images/blank.png"  id="pictureBox" style="width:40%;height:40%; text-align:right;float: right;">
-   <p id="log"> </p>
-<!--   <audio source src="misc/beep.wav" id="myAudio" type="audio/wav">
-    Your browser does not support the audio element.
-    </audio>-->
+ <div id="box" class="bodyColor">
+    <img src="en/graphics/goButton.png"  id="keyPicture"   class="keyPicture" >     
+	<img src="en/graphics/goButton2.png"  id="pictureBox" style="width:40%;height:40%; text-align:right;float: right;">
 </div>
+
+<h1 id = "showtime"></h1>
+<h1 id = "log"></h1>
 
 </body>
 </html>

@@ -1,23 +1,33 @@
 {
   "manifest_version": 2,
-  "short_name": "KeyBdFunFree",
-  "name": "Keyboard Fun Lite",
-  "version": "1.1",
-
+  "short_name": "Type A Word",
+  "name": "Type A Word",
+  "version": "2.5",
+  "offline_enabled": true,
+  "default_locale": "en",
+  "description": "This teaches the keys on the keyboard using   sight and sound to reinforce learning",  
    "icons": {
-    "32": "res/icon/android/36x36.png",
-	"48":"res/icon/android/48x48.png",
-    "128": "res/icon/android/144x144.png"
+    "32": "misc/icon32.png",
+	"48":"misc/icon48.png",
+    "128": "misc/icon128.png"
   },
   "permissions": [
+    "storage",
     "app.window.fullscreen",
+	"notifications",
+	 {"fileSystem": ["write", "retainEntries", "directory"]},
+	"https://www.googleapis.com/"
      ],
 		
-  "app": {
+	"file_handlers": {
+    "text": {
+      "types": [
+          "text/*"
+		]
+		}
+	},
+	 "app": {
     "background": {
       "scripts": ["background.js"]
     }}
 }
-
-
-    <item name="android.permission.WRITE_MEDIA_STORAGE" granted="true" flags="0" />

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+ <html >
+<head>
+<title> Settings </title>
+	<link rel="stylesheet" rev="stylesheet" href="support/main.css">
+	<link rel="stylesheet" rev="stylesheet" href="support/settings.css">
+	<link rel="manifest" href="manifest.json">
+	<link rel="icon" sizes="192x192" href="misc/settings.png"> 
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="apple-touch-icon" href="misc/settings.pngg"/>
+	<link rel='apple-touch-startup-image' href='misc/settings.png' />
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="support/settings.js" ></script>
+	<script type="text/javascript" src="support/settings2.js" ></script>
+</head>
+<body >
+<font face="arial">
+	<ul>
+	<li><a id='menu1' >General</a></li> 
+	<li><a id='menu2'>L&iacute;neas a Color</a></li> 
+	<li><a id='menu3' >Color Izquierda/Derecha</a></li> 
+	<!--<li><a id='menu4' href='#ab' onclick='doKeyPics()'> </a></li>-->
+	 <li><p>&nbsp;</li>
+	 <li> <button id='save'>Salvar</button>&nbsp;&nbsp;&nbsp;	 
+	 <button id='return'>Cancelar</button> </li>
+ </ul>
+<div id="sidebar">
+<h2 id="General"> General </h2>
+ <p>
+<div>
+<h3 id="kybd type"> Estilo de teclado</h3>
+
+  <input type="radio" id="Standard" name="kb" value="Standard" checked> Est&aacute;ndar <br>
+  <input type="radio" id="Spanish" name="kb" value="Spanish" > Espa&ntilde;ol <br>
+  <input type="radio" id="BigKeys" name="kb" value="BigKeys" > Big Keys Multicolor<br>
+  <input type="radio" id="ChesterCreek" name="kb" value="ChesterCreek"> ChesterCreek<br>
+  <p>
+</div> 
+<p>
+<div>
+ <input type="radio" name="q" id="qwerty" value="qwerty"> QWERTY Keyboard<br> 
+  <input type="radio" name="q" id="alpha" value="alpha"> Alphabetic Keyboard<br> 
+</div>
+  <p>
+  <div>
+  <input type="checkbox" id="beep" value="beep">  Sonido Bip?<br>
+  <input type="checkbox" id="sayLetter" value="sayLetter">  Diga Carta S&oacute;lo?<br> 
+  <input type="checkbox" id="audioCue" value="audioCue">Entrada de Audio Letras?<br>
+  <input type="checkbox" id="showtime" value="showtime">Muestra el Tiempo Tomado?<br>  
+</div>
+
+<h3> Seleccione n&uacute;mero de segundos de detenerse entre cartas</h3>
+ <select name="timer" id="timer">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+   <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+</select>
+ <br><br>
+ 
+ <table id='table2'> 
+	<tr>
+	<td id="bodyColor"  class="white">Color de Fondo</td>
+	<td class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<td id='body1'  class="lightGrey" ></td>
+	<td id='body2'  class="gray"  ></td>
+	<td id='body3'  class="darkGray"></td>
+	<td id='body4'  class="black"  ></td>
+	<td id='body5'  class="white"  ></td>
+	<td id='body6'  class="yellow" ></td>
+ </tr>
+ </table>
+<P>
+
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p id = "colors" >
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+<h3 > L&iacute;neas a Color <input type="radio" name="cl" id="cline" value="cline" checked>   Activo  
+ </h3>
+	<table id='table2'> 
+	<tr>
+	<td id='line0'  class="white" > Color: 123 </td>
+	<td class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<td id='key01'  class="red" ></td>
+	<td id='key02'  class="yellow"  ></td>
+	<td id='key03'  class="green"  ></td>
+	<td id='key04'  class="blue"  ></td>
+	<td id='key05'  class="purple"  ></td>
+	<td id='key06'  class="white"  ></td>
+	<td id='key07'  class="black" ></td>
+ </tr>
+ 
+ 	<tr>
+	<td id='line1'  class="white">Color: QWE</td>
+	<td class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<td id='key11'  class="red" ></td>
+	<td id='key12'  class="yellow"  ></td>
+	<td id='key13'  class="green"  ></td>
+	<td id='key14'  class="blue"  ></td>
+	<td id='key15'  class="purple"  ></td>
+	<td id='key16'  class="white"  ></td>
+	<td id='key17'  class="black"  ></td>
+ </tr>
+ 	<tr>
+	<td id='line2'  class="white">Color: ASD</td>
+	<td class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<td id='key21'  class="red"  ></td>
+	<td id='key22'  class="yellow"  ></td>
+	<td id='key23'  class="green"  ></td>
+	<td id='key24'  class="blue"  ></td>
+	<td id='key25'  class="purple"  ></td>
+	<td id='key26'  class="white" ></td>
+	<td id='key27'  class="black"  ></td>
+ </tr>
+ 	<tr>
+	<td id='line3'  class="white">Color: ZXC</td>
+	<td class="blank">&nbsp;&nbsp;&nbsp;
+	<td id='key31'  class="red"  ></td>
+	<td id='key32'  class="yellow"  ></td>
+	<td id='key33'  class="green"  ></td>
+	<td id='key34'  class="blue"  ></td>
+	<td id='key35'  class="purple"  ></td>
+	<td id='key36'  class="white"  ></td>
+	<td id='key37'  class="black"  ></td>
+ </tr>
+
+ </table>
+ 
+
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+<p id = "colorLR" >
+ <p>&nbsp;
+ <p>&nbsp;
+ <p>&nbsp;
+<h3  > Color Izquierda/Derechat   <input type="radio" name="cl" id="colorLeftRight" value="colorLR"  > Activo
+  </h3>
+
+  <table id='table2'> 
+	<tr>
+	<td id='keyLeft'  class="red">Color para la mano izquierda</td>
+	<td class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<td id='L1'  class="red"  ></td>
+	<td id='L2'  class="yellow"  ></td>
+	<td id='L3'  class="green"  ></td>
+	<td id='L4'  class="blue" ></td>
+	<td id='L5'  class="purple" ></td>
+	<td id='L6'  class="white"  ></td>
+	<td id='L7'  class="black"  ></td>
+ </tr>
+ 
+ 	<tr>
+	<td id='keyRight'  class="white">Color para la mano derecha</td>
+	<td class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<td id='R1'  class="red"  ></td>
+	<td id='R2'  class="yellow"  ></td>
+	<td id='R3'  class="green"  ></td>
+	<td id='R4'  class="blue"  ></td>
+	<td id='R5'  class="purple"  ></td>
+	<td id='R6'  class="white"  ></td>
+	<td id='R7'  class="black"  ></td>
+ </tr>
+ </table>
+  <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;  
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+
+  <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;  
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;  <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;  
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;  <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;  
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+ <P>&nbsp;
+
+</div>
+</font>
+	<script type="text/javascript" src="support/settings2.js" ></script>
+</body>
