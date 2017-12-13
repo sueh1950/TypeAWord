@@ -2,7 +2,7 @@ var lines = [];
 var buttons =[];
 var	lineColor = [];
 
-window.onload =  setTimeout(startUp, 1000);  	
+window.onload =  setTimeout(startUp, 200);  	
  
 var cChar = "a";
 var cIndex;  //index to character in line
@@ -258,24 +258,12 @@ function doLine(lIndex){
 
 function process() {
 	try {
-			document.getElementById("inBox").removeEventListener("keyup", process); 
+		document.getElementById("inBox").removeEventListener("keyup", process); 
 	} catch (err) {}
 	var inBox = document.getElementById("inBox"); 
 	var key = inBox.value; 
-	var keyPressed = key;
 	//ignore non alpha codes
-	if (!isNaN(key.charCodeAt(0))) {
-		//enye character for Spanish keyboard
-		try{
-			if ((key.charCodeAt(0) == 241) ||(key.charCodeAt(0) == 209)) {
-					key='~';
-			}
-		} catch (err) {console.log(err);}
-		processKey(keyPressed, key.toLowerCase());
-	} else {
-		document.getElementById("inBox").addEventListener("keyup", process);  
-	}
-
+	processKey(key.toLowerCase());
 	inBox.value = "";
 }
 function getMediaURL(snd) {
@@ -359,22 +347,28 @@ function processKey(key){
 				}
 				try {
 				document.getElementById("inBox").addEventListener("keyup", process); 
-				}
+				} catch (err) {}
 			}
 	}
 	catch (err)
 	{
 		try {
 			document.getElementById("inBox").addEventListener("keyup", process); 
-		}
+		} catch (err) {}
 	}
 }
 function setFocus (){
-	document.getElementById("inBox").focus();
 	try {
-		b.removeEventListener("keyup", process); 
-	} catch (err) {}
-	b.addEventListener("keyup", process);
+	document.getElementById("inBox").focus;
+	document.getElementById("inBox").value = "";
+	} catch (err) {console.log(err);}
+//	var b = document.getElementById("inBox");
+	//b.focus();
+	//b.value = "";
+	//try {
+		//b.removeEventListener("keyup", process); 
+	//} catch (err) {}
+	//b.addEventListener("keyup", process);
 }
 function processEvent() {
 
