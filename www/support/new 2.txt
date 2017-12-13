@@ -1,0 +1,4 @@
+	if (getData("lang") == "en") {
+		document.getElementById("zee").checked=getBoolean("zee");
+		document.getElementById("zed").checked=!getBoolean("zee");
+	}
