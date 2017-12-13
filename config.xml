@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ot_care.keyboardFunLite" 
-	version="1.2" 
+<widget id="com.suehossack.typeaword" 
+	version="2.5.0" 
 	versionCode="10" 
 	xmlns="http://www.w3.org/ns/widgets" 
 	xmlns:gap="http://phonegap.com/ns/1.0"
 	xmlns:android = "http://schemas.android.com/apk/res/android">
-<!--
+
 <gap:config-file platform="android" parent="/manifest">
      <application android:debuggable="true" />
 </gap:config-file>
--->
-    <name>keyboard Fun Lite</name>
+
+    <name>Type a Word </name>
     <description>
-   This app is designed by an Occupational Therapist to help children with physical or learning disabilities identify where keys are on the keyboard.
+   This app is designed by an Occupational Therapist to help children with physical or learning disabilities match keys on the keyboard.
 </description>
     <author email="sue@ot-care.com" href="http://ot-care.com">
       Sue Hossack
@@ -22,7 +22,14 @@
 
 	<plugin name="cordova-plugin-media" source="npm" spec="2.4.1" />
 	<plugin name="cordova-plugin-device" source="npm" spec="1.1.4"  />  
-<gap:config-file platform="android" parent="/manifest" mode="delete">
+	<plugin name="cordova-plugin-file" source="npm"   />  
+<!-- don't think I need this
+<preference name="iosExtraFilesystems" value="library,library-nosync,documents,documents-nosync,cache,bundle,root" />
+<preference name="AndroidExtraFilesystems" value="files,documents,cache,assets,root" />
+ -->
+	
+	
+	<gap:config-file platform="android" parent="/manifest" mode="delete">
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -31,69 +38,49 @@
     <preference name="permissions" value="none"/>
 <!--android.permission.RECORD_AUDIO, android.permission.READ_PHONE_STATE-->
 
-    <preference name="phonegap-version" value="cli-6.5.0" />	<!-- was cli-6.5.0-->
+    <preference name="phonegap-version" value="cli-6.5.0" />	
     <preference name="orientation" value="both" />
     <preference name="fullscreen" value="true" />
     <preference name="android-versionCode" value="0.0.2" />
-	<preference name="target-device" value="tablet" />
-	
+	<preference name="target-device" value="universal" />
+
+<preference name="AndroidPersistentFileLocation" value="Internal" />	
     <preference name="android-build-tool" value="ant|gradle" />
     <preference name="android-minSdkVersion" value="10" />
     <preference name="android-targetSdkVersion" value="12" />
     <preference name="android-installLocation" value="auto" />
     <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
     
-	<platform name="android">
-        <icon density="ldpi" src="www/res/icon/android/36x36.png" />
-        <icon density="mdpi" src="www/res/icon/android/48x48.png" />
-        <icon density="hdpi" src="www/res/icon/android/72x72.png" />
-        <icon density="xhdpi" src="www/res/icon/android/96x96.png" />
-        <icon density="xxhdpi" src="www/res/icon/android/144x144.png" />
-        <icon density="xxxhdpi" src="www/res/icon/android/192x192.png" />
-        <splash density="land-ldpi" src="www/res/screen/android/land320x240.png" />
-        <splash density="land-mdpi" src="www/res/screen/android/land480x320.png" />
-        <splash density="land-hdpi" src="www/res/screen/android/land800x480.png" />
-        <splash density="land-xhdpi" src="www/res/screen/android/land1280x720.png" />
-        <splash density="land-xxhdpi" src="www/res/screen/android/land1600x960.png" />
-        <splash density="land-xxxhdpi" src="www/res/screen/android/land1920x1280.png" />
-        <splash density="port-ldpi" src="www/res/screen/android/port240x320.png" />
-        <splash density="port-mdpi" src="www/res/screen/android/port320x480.png" />
-        <splash density="port-hdpi" src="www/res/screen/android/port480x800.png" />
-        <splash density="port-xhdpi" src="www/res/screen/android/port720x1280.png" />
-        <splash density="port-xxhdpi" src="www/res/screen/android/port960x1600.png" />
-        <splash density="port-xxxhdpi" src="www/res/screen/android/port1280x1920.png" />
-    </platform>
 
--<platform name="ios">
-<icon src="icon.png" />
-<icon src="www/res/icon/ios/icon.png" width="57"   height="57"/>
-<icon src="www/res/icon/ios/icon@2x.png" width="114"   height="114"/>
-<icon src="www/res/icon/ios/icon-40.png" width="40"   height="40"/>
-<icon src="www/res/icon/ios/icon-40@2x.png" width="80"   height="80"/>
-<icon src="www/res/icon/ios/icon-50.png" width="50"   height="50"/>
-<icon src="www/res/icon/ios/icon-50@2x.png" width="100"   height="100"/>
-<icon src="www/res/icon/ios/icon-60.png" width="60"   height="60"/>
-<icon src="www/res/icon/ios/icon-60@2x.png" width="120"   height="120"/>
-<icon src="www/res/icon/ios/icon-60@3x.png" width="180"   height="180"/>
-<icon src="www/res/icon/ios/icon-72.png" width="72"   height="72"/>
-<icon src="www/res/icon/ios/icon-72@2x.png" width="144"   height="144"/>
-<icon src="www/res/icon/ios/icon-76.png" width="76"   height="76"/>
-<icon src="www/res/icon/ios/icon-76@2x.png" width="152"   height="152"/>
-<icon src="www/res/icon/ios/icon-small.png" width="29"   height="29"/>
-<icon src="www/res/icon/ios/icon-small@2x.png" width="58"   height="58"/>
-<icon src="www/res/icon/ios/icon-small@3x.png" width="87"   height="87"/>
-<splash src="www/res/screen/ios/Default-568h@2x~iphone.png" width="640"   height="1136"/>
-<splash src="www/res/screen/ios/Default-667h.png" width="750"   height="1334"/>
-<splash src="www/res/screen/ios/Default-736h.png" width="1242"   height="2208"/>
-<splash src="www/res/screen/ios/Default-Landscape-736h.png" width="2208"   height="1242"/>
-<splash src="www/res/screen/ios/Default-Landscape@2x~ipad.png" width="2048"   height="1536"/>
-<splash src="www/res/screen/ios/Default-Landscape~ipad.png" width="1024"   height="768"/>
-<splash src="www/res/screen/ios/Default-Portrait@2x~ipad.png" width="1536"   height="2048"/>
-<splash src="www/res/screen/ios/Default-Portrait~ipad.png" width="768"   height="1024"/>
-<splash src="www/res/screen/ios/Default@2x~iphone.png" width="640"   height="960"/>
-<splash src="www/res/screen/ios/Default~iphone.png" width="320"   height="480"/>
+<preference name="iosPersistentFileLocation" value="Compatibility" />
 
-</platform>
+<icon src="www/res/icon/ios/icon.png" width="57" platform="ios" height="57"/>
+<icon src="www/res/icon/ios/icon@2x.png" width="114" platform="ios" height="114"/>
+<icon src="www/res/icon/ios/icon-40.png" width="40" platform="ios" height="40"/>
+<icon src="www/res/icon/ios/icon-40@2x.png" width="80" platform="ios" height="80"/>
+<icon src="www/res/icon/ios/icon-50.png" width="50" platform="ios" height="50"/>
+<icon src="www/res/icon/ios/icon-50@2x.png" width="100" platform="ios" height="100"/>
+<icon src="www/res/icon/ios/icon-60.png" width="60" platform="ios" height="60"/>
+<icon src="www/res/icon/ios/icon-60@2x.png" width="120" platform="ios" height="120"/>
+<icon src="www/res/icon/ios/icon-60@3x.png" width="180" platform="ios" height="180"/>
+<icon src="www/res/icon/ios/icon-72.png" width="72" platform="ios" height="72"/>
+<icon src="www/res/icon/ios/icon-72@2x.png" width="144" platform="ios" height="144"/>
+<icon src="www/res/icon/ios/icon-76.png" width="76" platform="ios" height="76"/>
+<icon src="www/res/icon/ios/icon-76@2x.png" width="152" platform="ios" height="152"/>
+<icon src="www/res/icon/ios/icon-small.png" width="29" platform="ios" height="29"/>
+<icon src="www/res/icon/ios/icon-small@2x.png" width="58" platform="ios" height="58"/>
+<icon src="www/res/icon/ios/icon-small@3x.png" width="87" platform="ios" height="87"/>
+<splash src="www/res/screen/ios/Default-568h@2x~iphone.png" width="640" platform="ios" height="1136"/>
+<splash src="www/res/screen/ios/Default-667h.png" width="750" platform="ios" height="1334"/>
+<splash src="www/res/screen/ios/Default-736h.png" width="1242" platform="ios" height="2208"/>
+<splash src="www/res/screen/ios/Default-Landscape-736h.png" width="2208" platform="ios" height="1242"/>
+<splash src="www/res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" platform="ios" height="1536"/>
+<splash src="www/res/screen/ios/Default-Landscape~ipad.png" width="1024" platform="ios" height="768"/>
+<splash src="www/res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" platform="ios" height="2048"/>
+<splash src="www/res/screen/ios/Default-Portrait~ipad.png" width="768" platform="ios" height="1024"/>
+<splash src="www/res/screen/ios/Default@2x~iphone.png" width="640" platform="ios" height="960"/>
+<splash src="www/res/screen/ios/Default~iphone.png" width="320" platform="ios" height="480"/>
+
   <!-- iOS only -->
   <preference name="target-device" value="universal" />
   <preference name="prerendered-icon" value="true" />
