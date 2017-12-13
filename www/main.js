@@ -258,24 +258,12 @@ function doLine(lIndex){
 
 function process() {
 	try {
-			document.getElementById("inBox").removeEventListener("keyup", process); 
+		document.getElementById("inBox").removeEventListener("keyup", process); 
 	} catch (err) {}
 	var inBox = document.getElementById("inBox"); 
 	var key = inBox.value; 
-	var keyPressed = key;
 	//ignore non alpha codes
-	if (!isNaN(key.charCodeAt(0))) {
-		//enye character for Spanish keyboard
-		try{
-			if ((key.charCodeAt(0) == 241) ||(key.charCodeAt(0) == 209)) {
-					key='~';
-			}
-		} catch (err) {console.log(err);}
-		processKey(keyPressed, key.toLowerCase());
-	} else {
-		document.getElementById("inBox").addEventListener("keyup", process);  
-	}
-
+	processKey(key.toLowerCase());
 	inBox.value = "";
 }
 function getMediaURL(snd) {
