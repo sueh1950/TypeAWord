@@ -10,7 +10,7 @@
      <application android:debuggable="true" />
 </gap:config-file>
 
-    <name>KeyboardFun </name>
+    <name>TypeAWord </name>
     <description>
    This app is designed by an Occupational Therapist to help children with physical or learning disabilities identify where keys are on the keyboard.
 </description>
