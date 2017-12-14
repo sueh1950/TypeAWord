@@ -39,6 +39,7 @@
 <!--android.permission.RECORD_AUDIO, android.permission.READ_PHONE_STATE-->
 
     <preference name="phonegap-version" value="cli-6.5.0" />	
+	<preference name='pgb-builder-version' value='2' />
     <preference name="orientation" value="both" />
     <preference name="fullscreen" value="true" />
     <preference name="android-versionCode" value="0.0.2" />
