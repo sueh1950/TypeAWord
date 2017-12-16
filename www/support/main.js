@@ -24,8 +24,12 @@ var langtext = ["en", "es"];
 var buttonIdx = [buttonTextEn, buttonTextEs];
 const adultTextEn = "For Adults: <br> Type the word to be spelled here, then press go. The child will be given prompts for each letter.</P>";
 const adultTextEs = "Para Adultos: <br> Escriba la palabra que se escribe ayu&iacute;. Pulse 'VA'. Los Ni&ntilde;os se lea dar&aacute; indicaciones para cada una de las letras";
-
 var adultTextArray = [adultTextEn, adultTextEs];
+
+const typeWordEn = "Please type the word to be spelled here" ;
+const typeWordEs = "Por favor, escriba la palabra a escribirse aquí" ;
+var   typeWordArray = [typeWordEn,typeWordEs];
+
 const spellEn = "I can type: "
 const spellEs = "Puedo teclear: ";
 var iCanSpell = [spellEn,spellEs];
@@ -126,14 +130,24 @@ function go ()
 	var bodyColor;
 	cIndex = 0;
 	home = false;
+
+	try{
+		cLine =  document.getElementById("wordBox").value;
+	} catch (err) {log("go:"+err);}
+
+	// no word added? 
+	if (cline == "") {
+		alert (typeWordArray[langIdx]);
+		refreshHome();
+		return;
+	}
+	
 	try {
 		document.getElementById("lang").addEventListener("click", doCaps);
 	} catch (err) {log(err);}
 	document.getElementById("lang").innerHTML = "Caps";
 
-	try{
-		cLine =  document.getElementById("wordBox").value;
-	} catch (err) {log("go:"+err);}
+
 	cChar = convertChar(cLine.charAt(cIndex));
 	
 	setData("word", cLine);
