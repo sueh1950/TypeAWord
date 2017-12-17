@@ -139,7 +139,7 @@ function go ()
 	} catch (err) { }
 
 	// no word added? 
-	if (cline == "") {
+	if (cLine == "") {
 		alert (typeWordArray[langIdx]);
 		refreshHome();
 		return;
