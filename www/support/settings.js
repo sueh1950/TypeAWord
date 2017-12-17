@@ -2,6 +2,8 @@ var dataCollectionFile;
 var storage;
 var fileObj;
 var settingsObj;
+var fullVersion = true;
+
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'Jul','Aug','Sep','Oct','Nov','Dec'] 
 
 var settings = {  //new object
