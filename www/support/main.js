@@ -27,8 +27,8 @@ const adultTextEn = "For Adults: <br> Type the word to be spelled here, then pre
 const adultTextEs = "Para Adultos: <br> Escriba la palabra que se escribe ayu&iacute;. Pulse 'VA'. Los Ni&ntilde;os se lea dar&aacute; indicaciones para cada una de las letras";
 var adultTextArray = [adultTextEn, adultTextEs];
 
-const typeWordEn = "Please type the word to be spelled here" ;
-const typeWordEs = "Por favor, escriba la palabra a escribirse aquí" ;
+const typeWordEn = "Please type a word to be spelled in the box:" ;
+const typeWordEs = "Por favor, escriba una palabra en la casilla:" ;
 var   typeWordArray = [typeWordEn,typeWordEs];
 
 const spellEn = "I can type: "
@@ -135,7 +135,10 @@ function go ()
 	home = false;
 
 	try{
-		cLine =  document.getElementById("wordBox").value;
+		var c = document.getElementById("wordBox")
+		if (c != null) {
+			cLine =  c.value;
+		}
 	} catch (err) { }
 
 	// no word added? 
