@@ -1,9 +1,9 @@
-var dataCollectionFile;
+var settings = {};
 var storage;
-var fileObj;
-var settingsObj;
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'Jul','Aug','Sep','Oct','Nov','Dec'] 
 
+try {storage = chrome.storage.local;
+} catch (err){
+}
 var settings = {  //new object
  audioCue: true,
  beep:true,
@@ -13,9 +13,6 @@ var settings = {  //new object
  CC:false,
  dataCollection:"No Data",
  firstTime:true,  //.getTime(),
- hide:false,
- jump:false,
- kybType:"standard",
  lang:"en",
  left_right:false,
  leftColor:"green",
@@ -24,6 +21,7 @@ var settings = {  //new object
  lineColor1:"white",
  lineColor2:"white",
  lineColor3:"white",
+ kybType:"standard",
  qwerty:true,
  rightColor:"red",
  sayKBLetter:false,
@@ -33,140 +31,57 @@ var settings = {  //new object
  Spanish:false,
  standard:true,
  timer:"2",
+ word:"cat",
  zee:true,
-}
-function fail(e) {
-    console.log("settings.js FileSystem Error");
-    console.log(e);
-}
-
-function getFiles( ) {
-	window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dir) {
-		dir.getFile( "dataCollection.txt", {create:true}, function(file) {
-			fileObj=file;	});
-			dir.getFile("settings.txt", {create:true}, function(file) {
-			readFile(file);	
-	     	settingsObj=file;	});
-	});
-}
-function readFile(fileEntry ) {
-	if (!fileEntry) return;
-	var key,value, para, i; 
-	fileEntry.file(function(file) {
-		var reader = new FileReader();
-		reader.onloadend = function(e) {
-			var keyPairs = this.result.split(",");
-			for (i = 0; i < keyPairs.length; i++) {
-				para = keyPairs[i].split(":");
-				setData(para[0], para[1]); 
-				}
-				useSettings();
-		};
-		reader.readAsText(file);
-	}, fail);
-}
-function successWrite(evt) {
-				var b = document.body.id;
-				if (b != "IcanSpell") {
-					window.alert("Settings saved...");
-					window.open("index.html", "_parent");
-				}
-}
-function writeFile( fileObj, str) {
-	var b = document.body.id;
-
-	try{
-		fileObj.createWriter(function(fileWriter) {
-			fileWriter.onwriteend = successWrite;
-			//var blob = new Blob([str], {type:'text/plain'});
-			fileWriter.write(str);
-			}, fail);
-	} catch (err) {
-			window.alert("Write failed: " + err);
-		}
-}
-function writeDataFile( str) {
-	try{
-		fileObj.createWriter(function(fileWriter) {
-			fileWriter.onwriteend = function(evt) {
-				};
-			fileWriter.onwrite = function(evt) {
-				};	
-			fileWriter.seek(fileWriter.length);		
-			//var blob = new Blob([str], {type:'text/plain'});
-			fileWriter.write(str);
-		}, fail);
-		} catch (err) {
-			window.alert("Write failed");
-		}
-}
-function setLetterTimestamp(cChar, startTime, endTime, errorCount){
-	var seconds = (endTime-startTime)/1000;	
-	var s, secs;
-	s= "<P><b>"+cChar +"</b>: ";
-	if (getData("lang")=="en"){
-			s+= " You took "
-			secs = " seconds";
-	} 	else {
-			s+= "Tard&oacute; "
-			secs = " segundos";		
-	}
-	s +=  seconds.toFixed(0)+ secs + ", "+errorCount +" errors</P> " ;  
-	updateDataCollection(s); // will append to file
-
-	if (getBoolean("showTime") ){
-		try {
-			document.getElementById("showtime").innerHTML = s;
-		} catch (err) {}
-	}
 
 }
-function setSessionTimestamp(){
-	var d = new Date();
-	var day = d.getDate(); 
-	var month = d.getMonth();
-	var year = d.getFullYear();
-	var hours = d.getHours();
-	var mins = d.getMinutes();
-	var secs = d.getSeconds();
-	var ampm = " a.m.";
-	var s;
-	
-	if (hours > 12) {
-		hours -= 12;
-		ampm = " p.m.";
-	}
-	if (mins <10) {
-		mins = "0" + mins;
-	}
-	
-	if (getData("lang")=="en"){
-		s =  "<P>Session started at " ;
-	} else {
-		s =  "<P>La sesi&oacute;n comenz&oacute;: " ;
-	}
-	s +=  hours + ":" + mins + ampm +", "+ months[month] +" " + day + " " + year +  ": <\P>";
-   
-	updateDataCollection(s);
+
+function setDefaults(){
+setData("qwerty",true);
+setData("settingsChanged", false); 
+setData("audioCue", true);
+setData("bodyColor","white");
+setData("bigKeys",false);
+setData("standard",true);
+setData("CC",false);
+setData("showTime",true);
+setData("lang", "en");
+setData("beep",true);
+setData("caps","");
+setData("dataCollection","No Data");
+setData("timer","2");
+setData("left_right",false);
+setData("leftColor","green");
+setData("lIndex","1");
+setData("rightColor","red");
+setData("lineColor1","white");
+setData("lineColor2","white");
+setData("lineColor3","white");
+setData("lineColor0","white");
+setData("sayLetter",false);
+setData("sayKBLetter",false);
+setData("Spanish",false);
+setData("word", "");
+setData("zee", true);
+
+ storeSettings();
 }
-
-function updateDataCollection(newValue){
-	writeDataFile( newValue );
-}
-
-
-function useSettings( ){
-	var x;
-	var langIdx = EN;	
-	var first =  getBoolean("firstTime");
  
+function getSettings(){
+	var langIdx = EN;
+	var x,s;
+	//Data has been read in by this time, overwriting the defaults, if any
+
+	var first =  getData("firstTime");
 	var d = new Date();
-	 if (first) {
+	if (first==true) {
 		setData("firstTime",d.getTime());
+		setDefaults();
+		//storeSettings();
 	}
 	var elapsed = d.getTime() - getData("firstTime");
 	var days =  elapsed/(1000*60*60*24);
- 
+
 	//do this first to setup line letters
 	if (getBoolean("qwerty")==true){ 	
 		doQwerty();
@@ -175,44 +90,79 @@ function useSettings( ){
 	}
 
 	setUpColorArrays();
-		
+
+	//Spanish keyboard?
 	if (getData("kybType") == "bigKeys")
-		{ doBigKeysKB();
-		}else {	if (getData("kybType") =="CC"){ 	doChesterCreekKB();
+	{ doBigKeysKB();
+	}else {	if (getData("kybType") =="CC"){ 	doChesterCreekKB();
 			}	else { 	doStandardKB();}
 		}
-
+		
 	langIdx=EN;
 	if (getData("lang") =="es") {
 		langIdx=ES;	
 	} 
 	setLang(langIdx);
- 	setButtons();
+
+	//lIndex = getNumber("lIndex");
+	//for (i=0; i < 4; i++)
+	//{	//put line buttons in array for clearing
+		//buttons[i] = document.getElementById("line" + i);
+	//}
+	//doLine(lIndex);
+	setButtons();
+	//var pc = getData("promptColor");
+	// set prompt color if any 
+	//if (pc != "none") {
+		//var s = ".prompt { background-color:" + pc  + "; border: 5px solid black;}"
+		//document.getElementById("prompt").innerHTML=s;
+	//}
 	s = ".bodyColor { background-color:" + getData("bodyColor") + ";}"
 	document.getElementById("bg").innerHTML=s;
-	setTimeout(setFocus, 2*1000);
-	setSessionTimestamp();  //**
+	
+	setTimeout(setFocus, 4*1000);
+	setSessionTimestamp();
 	setStaticListeners();
 	cLine = getData("word");
 	refreshHome();
 }
 
-function setData(cname, cvalue ) { 
-	settings[cname ]=cvalue;
-}
-
-function storeSettings (fileObj) {
-	var line="";
-	try{
-		for (x in settings) {
-			line+= x + ":" + settings[x] + ",";
-		}
-		writeFile(fileObj,line);
+function setDataCollection(newValue){
+	if (fullVersion) {
+		chrome.storage.local.set({'dataCollection': newValue}, function() {
+		   });
 	}
-	catch(err){	}
+	
+}
+function setData(cname, cvalue ) {
+	settings[cname ]=cvalue;
+//log("setdata " + cname + ":" + cvalue); 	
 }
 
+function storeSettings () {
+	if (fullVersion) {
+		try{
+			storage.set(settings);
+		}
+		catch(err){
+			log("storage error: " + err);
+		//local storage
+		}
+	}
+}
+ 
 function restoreSettings(){
+	try{
+		storage.get( function(result){
+			for (x in result) {
+				settings[x] =  result[x];
+			}
+		startUp();
+		});
+	}
+	catch(err){
+		log(err);
+	}
 }
 function getData(cname) {
 	var x = "";
@@ -225,6 +175,7 @@ function getNumber(cname) {
 	if (x == null ) {
 		x="0";
 	}
+ 
 	return x;
 }
 function setLineColor(cLine, cColor){
@@ -238,6 +189,7 @@ for (c=0; c < cLine.length; c++)
 function getBoolean(cname) {
 	var x = getData(cname);	
 	var bool = false;
+
 	try{
 		if ((x == "true") || (x == true)){bool = true;}
 		}catch (err) {//bool is false if doesn't exist
@@ -248,16 +200,68 @@ function setBoolean(cname, cvalue) {
 	var cvalueS=true;
 	if (cvalue == "false"){
 		cvalueS = false;
-	} 
+	} //####
 	setData(cname, cvalue);
 }
 function getTimestamp(){
 		var d = new Date();
 		return d.getTime();
 }
+function setLetterTimestamp(cChar, startTime, endTime, errorCount){
+	var seconds = (endTime-startTime)/1000;	
+	var s, secs;
+	s= "<P><b>"+cChar +"</b>: ";
+		if (getData("lang")=="en"){
+			s+= " You took "
+			secs = " seconds";
+		} else {
+			s+= "Tard&oacute; "
+			secs = " segundos";
+		}
+	s +=  seconds.toFixed(0)+ secs + ", "+errorCount +" errors</P> " ;  	
+
+	var dataCollection = getData("dataCollection");
+	dataCollection += s;
+	setData("dataCollection", dataCollection);
+	setDataCollection(dataCollection);
+	if (getBoolean("showTime") ){
+		try {
+			document.getElementById("showtime").innerHTML = s;
+		} catch (err) {}
+	}
+}
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'Jul','Aug','Sep','Oct','Nov','Dec'] 
+function setSessionTimestamp(){
+	var d = new Date();
+	var day = d.getDate();
+	var month = d.getMonth();
+	var year = d.getFullYear();
+	var hours = d.getHours();
+	var mins = d.getMinutes();
+	var ampm = " a.m.";
+	var dataCollection = getData("dataCollection");
+	
+	if (hours > 12) {
+		hours -= 12;
+		ampm = " p.m.";
+	}
+	if (mins <10 ) { mins = "0" + mins};
+	
+	if (getData("lang")=="en"){
+		dataCollection +=  "<P>Session started at " ;
+	} else {
+		dataCollection +=  "<P>La sesi&oacute;n comenz&oacute;: " ;
+	}
+   dataCollection +=  hours + ":" + mins + ampm + ", "+ months[month] +" " + day + " " + year +  ": <\P>";
+   
+   setData("dataCollection", dataCollection);	
+   	//storeSettings(); //##
+	setDataCollection(dataCollection);
+	}
+
 
 function returnToMain (){
-		window.location.assign("../index.html")
+	window.location.assign("../index.html");
 }
 function setColorLines(lineNumber, color){
 	var b;
@@ -271,9 +275,10 @@ function setLeftLines( color){
 	document.getElementById("keyLeft").className=color;			
 }
 function setRightLines( color){
+
 	document.getElementById("cline").checked = false;
 	document.getElementById("colorLeftRight").checked = true;
-	document.getElementById("keyRight" ).className=color;			
+		document.getElementById("keyRight" ).className=color;			
 }
 
 function setBodyColor(color){
@@ -297,12 +302,37 @@ function doKeyPics(){
 	window.location.assign("#keyPics")		
 }
 function 	clearMenuItems() {
-	document.getElementById('menu1').className="notActive";
-	document.getElementById('menu2').className="notActive";
-	document.getElementById('menu3').className="notActive";
-	//document.getElementById('keyPics').className="notActive";
+document.getElementById('menu1').className="notActive";
+document.getElementById('menu2').className="notActive";
+document.getElementById('menu3').className="notActive";
+//document.getElementById('keyPics').className="notActive";
 }
 function setMenuActive(menuItem){
 	clearMenuItems();
 	document.getElementById(menuItem).className="active";
 }
+
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+        for (key in changes) {
+          var storageChange = changes[key];
+          /*console.log('Storage key "%s" in namespace "%s" changed. ' +
+                      'Old value was "%s", new value is "%s".',
+                      key,
+                      namespace,
+                      storageChange.oldValue,
+                      storageChange.newValue);*/
+		  if ( (key == "dataCollection") && (storageChange.newValue =="")){
+			setData(key, "");
+			setSessionTimestamp()
+		  } 
+		  if ((key == "settingsChanged")&& (storageChange.newValue== true)) {
+			   chrome.storage.local.set({'settingsChanged': false}, function() {
+          // Notify that we saved.
+          //log('settingsChanged');
+		   });
+	
+			  restoreSettings();
+		  }
+        }
+      });
+
