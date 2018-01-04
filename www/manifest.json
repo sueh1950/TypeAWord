@@ -11,22 +11,14 @@
 	"48":"misc/icon48.png",
     "128": "misc/icon128.png"
   },
-  "permissions": [
+"permissions": [
     "storage",
     "app.window.fullscreen",
 	"notifications",
-	 {"fileSystem": ["write", "retainEntries", "directory"]},
 	"https://www.googleapis.com/"
      ],
 		
-	"file_handlers": {
-    "text": {
-      "types": [
-          "text/*"
-		]
-		}
-	},
-	 "app": {
+  "app": {
     "background": {
       "scripts": ["background.js"]
     }}
