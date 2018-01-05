@@ -28,18 +28,22 @@
 <preference name="AndroidExtraFilesystems" value="files,documents,cache,assets,root" />
  -->
 	
-	<edit-config file="AndroidManifest.xml" target="/manifest/uses-permission[@android:name='android.permission.WRITE_EXTERNAL_STORAGE']" mode="merge">
-       <uses-permission android:name="android.permission.VIBRATE" />
+<edit-config file="AndroidManifest.xml" target="/manifest/uses-permission[@android:name='android.permission.WRITE_EXTERNAL_STORAGE']" mode="merge">
+       <uses-permission android:name="android.permission.STATUS_BAR" />
 </edit-config>
 <edit-config file="AndroidManifest.xml" target="/manifest/uses-permission[@android:name='android.permission.RECORD_AUDIO']" mode="merge">
-       <uses-permission android:name="android.permission.VIBRATE" />
+       <uses-permission android:name="android.permission.STATUS_BAR" />
 </edit-config>
 <edit-config file="AndroidManifest.xml" target="/manifest/uses-permission[@android:name='android.permission.MODIFY_AUDIO_SETTINGS']" mode="merge">
-       <uses-permission android:name="android.permission.VIBRATE" />
+       <uses-permission android:name="android.permission.STATUS_BAR" />
 </edit-config>	
 <edit-config file="AndroidManifest.xml" target="/manifest/uses-permission[@android:name='android.permission.READ_PHONE_STATE']" mode="merge">
-       <uses-permission android:name="android.permission.VIBRATE" />
+       <uses-permission android:name="android.permission.STATUS_BAR" />
 </edit-config>
+<edit-config file="AndroidManifest.xml" target="/manifest/uses-permission[@android:name='android.permission.INTERNET']" mode="merge">
+       <uses-permission android:name="android.permission.STATUS_BAR" />
+</edit-config>
+
 <!--	<gap:config-file platform="android" parent="/manifest" mode="delete">
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
