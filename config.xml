@@ -123,7 +123,7 @@
   <preference name="prerendered-icon" value="true" />
   <preference name="detect-data-types" value="true" />
   <preference name="exit-on-suspend" value="false" />
-  <preference name="deployment-target" value="6.0" />
+  <preference name="deployment-target" value="7.0" />
   
       <!--<engine name="ios" spec="~4.3.1" />-->
 </widget>
