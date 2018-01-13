@@ -90,6 +90,7 @@
     </platform>
 <preference name="iosPersistentFileLocation" value="Compatibility" />
 -<platform name="ios">
+<icon src="www/res/icon/ios/icon1024.png" width="1024" platform="ios" height="1024"/>
 <icon src="www/res/icon/ios/icon.png" width="57" platform="ios" height="57"/>
 <icon src="www/res/icon/ios/icon@2x.png" width="114" platform="ios" height="114"/>
 <icon src="www/res/icon/ios/icon-40.png" width="40" platform="ios" height="40"/>
